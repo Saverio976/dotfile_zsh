@@ -14,10 +14,15 @@ else
     source "$SRC/."
 fi
 
-mkdir -p "$XDG_CONFIG_HOME/zsh"
+mkdir -p "$XDG_CONFIG_HOME"
 
-cp -r  "$SRC/.config/zsh/."*  "$XDG_CONFIG_HOME/zsh/"
-cp -r  "$SRC/etc/zsh/"*       "/etc/zsh/"
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
+    echo "FAILED !! ERROR !! $XDG_CONFIG_HOME/zsh exists..."
+    exit 2
+fi
+
+ln -sf   "$SRC/.config/zsh"     "$XDG_CONFIG_HOME/zsh"
+cp -r    "$SRC/etc/zsh/"*       "/etc/zsh/"
 
 chown -R "$USER_GROUP" "$XDG_DATA_HOME"
 chown -R "$USER_GROUP" "$XDG_STATE_HOME"
