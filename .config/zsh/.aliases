@@ -1,0 +1,37 @@
+# vi: ft=bash
+
+function fnalias() {
+    $1 $(echo "${@:2}" | sed 's/--color=.\+/--color=force/')
+}
+
+alias ip='ip -color=auto'
+
+alias sudo='sudo '
+
+alias watch='fnalias watch -c '
+
+alias xargs='xargs '
+
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config '
+
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts" '
+
+[ $commands[eza] ] \
+    && alias ls='eza --long --all --icons=auto --group-directories-first --header' \
+    || alias ls='ls -la --group-directories-first --color=auto'
+
+[ $commands[nvim] ] \
+    && alias vi='nvim '
+
+alias kx='kubectx '
+
+alias kn='kubens '
+
+function kxn() {
+    1="$(echo "$1" | tr -c '[:alnum:]-_' '[ *]')"
+    local ctx="$(echo - "$1" | awk '{print $1}')"
+    local ns="${2-$(echo - "$1" | awk '{print $2}')}"
+
+    kubectx ${ctx:l}
+    [ -n "$ns" ] && kubens "${ns:l}"
+}

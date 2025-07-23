@@ -23,8 +23,13 @@ if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
     echo "FAILED !! ERROR !! $XDG_CONFIG_HOME/zsh exists..."
     exit 2
 fi
+if [[ -d "$XDG_CONFIG_HOME/yarn" ]]; then
+    echo "FAILED !! ERROR !! $XDG_CONFIG_HOME/yarn exists..."
+    exit 2
+fi
 
 ln -sf   "$SRC/.config/zsh"     "$XDG_CONFIG_HOME/zsh"
+ln -sf   "$SRC/.config/yarn"    "$XDG_CONFIG_HOME/yarn"
 cp -r    "$SRC/etc/zsh/"*       "/etc/zsh/"
 
 if [[ "$USER_GROUP" != "" ]]; then

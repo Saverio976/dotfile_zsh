@@ -21,6 +21,16 @@ export PATH
 
 # --
 
+if [ $commands[nvim] ]; then
+    export EDITOR=nvim
+elif [ $commands[vim] ]; then
+    export EDITOR=vim
+else
+    export EDITOR=nano
+fi
+
+# --
+
 ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 
 # --

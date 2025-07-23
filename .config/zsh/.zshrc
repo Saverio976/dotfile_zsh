@@ -36,4 +36,8 @@ zinit wait lucid light-mode for \
 
 # --
 
+source "$XDG_CONFIG_HOME/zsh/.aliases"
+
+# --
+
 [[ ! -f "$XDG_CONFIG_HOME/zsh/.p10k.zsh" ]] || source "$XDG_CONFIG_HOME/zsh/.p10k.zsh"
