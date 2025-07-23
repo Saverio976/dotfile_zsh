@@ -5,14 +5,17 @@ USER_GROUP="$2"
 
 if [[ -d "$SRC" ]]; then
     source "$SRC/.config/zsh/.zshenv"
-    mkdir -p "$XDG_DATA_HOME"
-    ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
-    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 else
-    git clone TODO TODO
-    SRC="TODO"
-    source "$SRC/."
+    mkdir -p "$HOME/dotfiles"
+    SRC="$HOME/dotfiles/zsh"
+    git clone git@github.com:Saverio976/dotfile_zsh.git "$SRC" \
+        || git clone https://github.com/Saverio976/dotfile_zsh.git "$SRC"
+    source "$SRC/.config/zsh/.zshenv"
 fi
+
+mkdir -p "$XDG_DATA_HOME/zinit"
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 mkdir -p "$XDG_CONFIG_HOME"
 
@@ -24,8 +27,10 @@ fi
 ln -sf   "$SRC/.config/zsh"     "$XDG_CONFIG_HOME/zsh"
 cp -r    "$SRC/etc/zsh/"*       "/etc/zsh/"
 
-chown -R "$USER_GROUP" "$XDG_DATA_HOME"
-chown -R "$USER_GROUP" "$XDG_STATE_HOME"
-chown -R "$USER_GROUP" "$XDG_CACHE_HOME"
-chown -R "$USER_GROUP" "$XDG_CONFIG_HOME"
-chown -R "$USER_GROUP" "$XDG_LOCAL_BIN_HOME"
+if [[ "$USER_GROUP" != "" ]]; then
+    chown -R "$USER_GROUP" "$XDG_DATA_HOME"
+    chown -R "$USER_GROUP" "$XDG_STATE_HOME"
+    chown -R "$USER_GROUP" "$XDG_CACHE_HOME"
+    chown -R "$USER_GROUP" "$XDG_CONFIG_HOME"
+    chown -R "$USER_GROUP" "$XDG_LOCAL_BIN_HOME"
+fi

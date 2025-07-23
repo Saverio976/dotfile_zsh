@@ -5,9 +5,10 @@ RUN pacman --noconfirm -Syyuu \
 
 RUN useradd -ms /bin/zsh testuser
 
-COPY --chown=testuser:testuser . /home/testuser/dotfiles
+RUN mkdir -p /home/testuser/dotfiles
+COPY --chown=testuser:testuser . /home/testuser/dotfiles/zsh
 ENV XDG_CONFIG_HOME "/home/testuser/.config"
-RUN HOME=/home/testuser zsh "/home/testuser/dotfiles/install.sh" "/home/testuser/dotfiles" "testuser:testuser"
+RUN HOME=/home/testuser zsh "/home/testuser/dotfiles/zsh/install.sh" "/home/testuser/dotfiles/zsh" "testuser:testuser"
 
 USER testuser
 
