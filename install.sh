@@ -49,6 +49,8 @@ ln -sf   "$SRC/.local/bin/terminal-choose.sh"   "$XDG_LOCAL_BIN_HOME/terminal-ch
 ln -sf   "$SRC/.bashrc"                         "$HOME/.bashrc"
 cp -r    "$SRC/etc/zsh/"*                       "/etc/zsh/"
 
+mkdir -p "$HOME/Documents/" "$HOME/Downloads/"
+
 if [[ "$USER_GROUP" != "" ]]; then
     chown -R "$USER_GROUP" "$XDG_DATA_HOME"
     chown -R "$USER_GROUP" "$XDG_STATE_HOME"
