@@ -27,9 +27,19 @@ if [[ -d "$XDG_CONFIG_HOME/yarn" ]]; then
     echo "FAILED !! ERROR !! $XDG_CONFIG_HOME/yarn exists..."
     exit 2
 fi
+if [[ -d "$XDG_CONFIG_HOME/npm" ]]; then
+    echo "FAILED !! ERROR !! $XDG_CONFIG_HOME/npm exists..."
+    exit 2
+fi
+if [[ -d "$XDG_CONFIG_HOME/git" ]]; then
+    echo "FAILED !! ERROR !! $XDG_CONFIG_HOME/git exists..."
+    exit 2
+fi
 
 ln -sf   "$SRC/.config/zsh"     "$XDG_CONFIG_HOME/zsh"
 ln -sf   "$SRC/.config/yarn"    "$XDG_CONFIG_HOME/yarn"
+ln -sf   "$SRC/.config/npm"     "$XDG_CONFIG_HOME/npm"
+ln -sf   "$SRC/.config/git"     "$XDG_CONFIG_HOME/git"
 cp -r    "$SRC/etc/zsh/"*       "/etc/zsh/"
 
 if [[ "$USER_GROUP" != "" ]]; then
