@@ -15,7 +15,8 @@ zinit ice \
     as"program"                                                               \
     atclone"$D2_COMMAND_INSTALL"                                              \
     atpull"%atclone"                                                          \
-    nocompile'!'
+    nocompile'!'                                                              \
+    light-mode
 zinit snippet "$D2_URL"
 
 fi
