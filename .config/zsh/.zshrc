@@ -14,29 +14,37 @@ setopt AUTO_LIST
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
-    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
-    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-zinit light trapd00r/LS_COLORS
-
 zinit ice depth"1"
 zinit light romkatv/powerlevel10k
 
-zinit wait lucid light-mode for \
-        atinit"zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
-        atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" atload"_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions \
-        blockf atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions \
-    zdharma-continuum/history-search-multi-word \
-    OMZP::colored-man-pages \
-    OMZP::git \
-    OMZP::docker \
+zinit wait lucid for                                                          \
+        atinit"zicompinit; zicdreplay"                                        \
+    zdharma-continuum/fast-syntax-highlighting                                \
+        atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20"                            \
+        atload"_zsh_autosuggest_start"                                        \
+    zsh-users/zsh-autosuggestions                                             \
+        blockf                                                                \
+        atpull'zinit creinstall -q .'                                         \
+    zsh-users/zsh-completions                                                 \
+    zdharma-continuum/history-search-multi-word                               \
+    OMZP::colored-man-pages                                                   \
+    OMZP::git                                                                 \
+    OMZP::docker                                                              \
+        atclone"dircolors -b LS_COLORS > clrs.zsh"                            \
+        atpull'%atclone'                                                      \
+        pick"clrs.zsh"                                                        \
+        nocompile'!'                                                          \
+        atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'       \
+    trapd00r/LS_COLORS
 
 # --
 
 source "$XDG_CONFIG_HOME/zsh/.aliases"
+
+# --
+
+export D2_enable=1
+source "$XDG_CONFIG_HOME/zsh/.programs"
 
 # --
 
