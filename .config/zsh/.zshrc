@@ -10,6 +10,9 @@ setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt AUTO_LIST
 
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # --
 
 source "${ZINIT_HOME}/zinit.zsh"
