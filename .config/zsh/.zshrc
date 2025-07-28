@@ -6,7 +6,7 @@ fi
 
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
-setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt AUTO_LIST
 
@@ -47,6 +47,7 @@ source "$XDG_CONFIG_HOME/zsh/.aliases"
 # --
 
 export D2_enable=1
+export EZA_enable=1
 source "$XDG_CONFIG_HOME/zsh/.programs"
 
 # --
