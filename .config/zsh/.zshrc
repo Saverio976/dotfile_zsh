@@ -42,13 +42,13 @@ zinit wait lucid for                                                          \
 
 # --
 
-source "$XDG_CONFIG_HOME/zsh/.aliases"
-
-# --
-
 export D2_enable=1
 export EZA_enable=1
 source "$XDG_CONFIG_HOME/zsh/.programs"
+
+# --
+
+source "$XDG_CONFIG_HOME/zsh/.aliases"
 
 # --
 
