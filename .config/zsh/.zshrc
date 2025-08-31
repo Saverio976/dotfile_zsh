@@ -7,6 +7,7 @@ fi
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt AUTO_LIST
 
@@ -20,7 +21,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth"1"
 zinit light romkatv/powerlevel10k
 
-zinit wait lucid for                                                          \
+zinit lucid for                                                               \
         atinit"zicompinit; zicdreplay"                                        \
     zdharma-continuum/fast-syntax-highlighting                                \
         atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20"                            \
