@@ -40,6 +40,6 @@ fi
 plugins=(${D2_ITER[@]} ${EZA_ITER[@]})
 
 if [ ${#plugins} -ne 0 ]; then
-    zinit wait lucid for \
+    zinit lucid for \
         "${plugins[@]}"
 fi
